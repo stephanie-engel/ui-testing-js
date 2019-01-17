@@ -1,0 +1,23 @@
+{
+  "name": "ui_automation_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@ungap/url-search-params": "^0.1.2",
+    "dotenv": "^6.2.0",
+    "query-string": "^6.2.0"
+  },
+  "devDependencies": {
+    "testcafe": "^0.23.3"
+  },
+  "scripts": {
+    "chrome-tests": "testcafe chrome tests/",
+    "firefox-tests": "testcafe firefox tests/",
+    "safari-tests": "testcafe safari tests/",
+    "edge-tests": "testcafe edge tests/",
+    "ie-tests": "testcafe ie tests/"
+  },
+  "author": "Stephanie Engel",
+  "license": "ISC"
+}
