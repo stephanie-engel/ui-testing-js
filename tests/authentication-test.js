@@ -14,7 +14,7 @@ const newAccountEmail = 'testcafenew' + randomString + '@email.com'
 
 test('Sign in with valid credentials', async t => {
     await authenticationPage.signIn(userEmail, validPassword);
-    await t.wait(5000)
+    await t.wait(2000)
     const myAccountRedirect = await t.eval(() => window.location);
     await t.expect(myAccountRedirect.search).eql('?controller=my-account', 'Account page is not displayed!');
 });
