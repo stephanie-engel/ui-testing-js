@@ -23,17 +23,16 @@ const mobile = process.env.MOBILE;
 
 test('Create an account with only the required fields', async t => {
     await authenticationPage.createAccountStepOne(email1);
-    await t.wait(1000);
+    await t.expect(createAccountPage.emailInput.value).eql(email1, 'Account page is not displayed!');
+    await t.expect(createAccountPage.addressAliasInput.value).eql('My address', 'Account page is not displayed!');
+    
     await createAccountPage.registerAccount(firstname, lastname, password, address, city, state, zip, mobile);
     const myAccountRedirect = await t.eval(() => window.location);
-    // add assertion to make sure email address is prefilled correctly
-    // add assertion to make sure alias is prefilled correctly
     await t.expect(myAccountRedirect.search).eql('?controller=my-account', 'Account page is not displayed!');
 });
 
 test('Create new account without entering data', async t => {
     await authenticationPage.createAccountStepOne(email2);
-    await t.wait(1000);
     await createAccountPage.registerButton.click;
     await t.expect(createAccountPage.validationMessage.textContent).contains('You must register at least one phone number.', 'Phone validation message is not displayed!');
 });
