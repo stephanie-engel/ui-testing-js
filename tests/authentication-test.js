@@ -14,6 +14,7 @@ const newAccountEmail = 'tcnew_' + randomString + '@email.com'
 
 test('Sign in with valid credentials', async t => {
     await authenticationPage.signIn(userEmail, validPassword);
+
     const myAccountRedirect = await t.eval(() => window.location);
     await t.expect(myAccountRedirect.search).eql('?controller=my-account', 'Account page is not displayed!');
 });
@@ -25,6 +26,7 @@ test('Sign in with invalid credentials', async t => {
 
 test('Enter email address to create an account', async t=>{
     await authenticationPage.createAccountStepOne(newAccountEmail);
+
     const createAccountRedirect = await t.eval(() => window.location);
     await t.expect(createAccountRedirect.search).eql('?controller=authentication&back=my-account', 'Create an Account page is not displayed!');
 });
